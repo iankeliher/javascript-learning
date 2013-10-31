@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="fancy">
+	<head>
+		<title>jQuery Example</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script>
+					
+				
+			$(document).ready(function(){
+				
+				
+				$("#button").click(function() {
+					$("#wrapper").toggleClass("fancy");
+					console.log("you clicked it");
+				});
+				
+			
+			
+			});
+			
+			
+			
+			
+		</script>
+		<style>
+		   
+			html {
+    			min-height: 100%;
+    			background-image: -webkit-linear-gradient(top right, #ff41a8, #ff9d10);
+    			-webkit-transition: background, 20s;
+			}
+			.fancy {
+				background-image: -webkit-linear-gradient(top right, #ff9d10, #ff41a8);
+			}
+			
+			#button {
+				height: 100px;
+				width: 100px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 50%;
+				background-color: white;
+			}
+		
+		</style>
+	</head>
+	<body id="wall">
+	
+	
+	<div id="wrapper" class="fancy">
+	<div id="button"></div>
+	</div>
+	</body>
+</html>

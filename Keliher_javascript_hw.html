@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html id="total">
+	<head>
+		<title>jQuery Example</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script>
+					
+				
+			$(document).ready(function(){
+			
+				$("#decor, #decor2").click(function() {
+					$("#decor, #decor2").toggleClass("fancy2");
+					$("#total").toggleClass("fancy");
+				});
+				
+				$("#button").hover(function() {
+					$("#decor").toggleClass("glowtop");
+					$("#decor2").toggleClass("glowbottom");
+				});
+			
+			});
+			
+			
+			
+			
+		</script>
+		<style>
+		   
+			html {
+    			min-height: 100%;
+    			background-image: -webkit-linear-gradient(top right, #ff41a8, #ff9d10);
+    			z-index: -3;
+    			
+				}
+
+			
+		.fancy {
+				background-image: -webkit-linear-gradient(top right, #000, #000);
+				z-index: 3;
+				}
+			
+		#button {
+				content: url('img/xxlogo_trans.png');
+				height: 40%;
+				width: 40%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 10%;
+				-webkit-transition: width 10s ease, height 10s ease, -webkit-transform 20s ease;
+				clear: left;
+				-webkit-transform: rotate(0deg);
+    			}
+    			
+    	#button:hover {
+    			width: 45%;
+    			height: 45%;
+    			clear: left;
+    			-webkit-transform: rotate(360deg);
+		}
+		
+		.decor {
+			width: 50px;
+			height: 50px;
+			background-color: white;
+			margin: 10px 0px 10px 10px;
+			float: left;
+			-webkit-transition: background-color 2s ease, width 10s linear;
+		}
+		
+		.decor:hover {
+			background-color: #ff6171;
+		}
+		
+		.glowtop {
+			background-color: #ff6171;
+		}
+		
+		.decor2 {
+			width: 50px;
+			height: 50px;
+			background-color: white;
+			float: right;
+			margin: 10px 10px 10px 0px;
+			-webkit-transition: background-color 2s ease, width 10s linear;
+		}
+		
+		.decor2:hover {
+			background-color: orange;
+		}
+		
+		.glowbottom {
+			background-color: orange;
+		}
+		
+		.fancy2 {
+			width: 99%;
+			background-color: white;
+		}
+		
+		
+		</style>
+	</head>
+	<body>
+	<audio autoplay loop>
+		<source src="img/intro.mp3" type="audio/mp3">
+		
+	</audio>
+	<div id="decor" class="decor"></div>
+	<div id="wrapper" class="fancy">
+	</div>
+	<div id="button"></div>
+	<div id="decor2" class="decor2"></div>
+	</body>
+</html>

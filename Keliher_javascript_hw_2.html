@@ -1,0 +1,63 @@
+<DOCTYPE! HTML>
+<html>
+<head>
+		<title>jQuery Example</title>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script>
+					
+				
+			$(document).ready(function(){
+				
+				
+				$("#button").click(function() {
+					$("#wrapper").toggleClass("fancy");
+					console.log("you clicked it");
+				});
+				
+				$("#decor, #decor2").click(function() {
+					$("#decor, #decor2").toggleClass("fancy2");
+					console.log("yes");
+				});
+			
+			
+			});
+			
+			
+			
+			
+		</script>
+		<style>
+		   
+			html {
+				min-height: 100%;
+    			background-color: black;;
+				}
+
+			
+		#button {
+				content: url('img/xxlogo_trans.png');
+				height: 50%;
+				width: 30%;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 16%;
+				-webkit-transition: all 10s ease;
+    			}
+    			
+    	#button:hover {
+    			height: 40%;
+    			width: 40%;
+    			}
+		
+		
+		</style>
+	</head>
+	<body id="wall">
+	
+	<div id="decor" class="decor"></div>
+	<div id="wrapper" class="fancy">
+	</div>
+	<a href="Keliher_javascript_hw.html"><div id="button"></div></a>
+	<div id="decor2" class="decor2"></div>
+	</body>
+</html>
