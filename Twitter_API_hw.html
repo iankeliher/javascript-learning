@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Twitter Search</title>
+                <script src="http://code.jquery.com/jquery-latest.js"></script>
+                <script>
+                        $(document).ready(function(){
+                        
+                                //get the most recent tweets about waking and falling asleep in Manhattan
+                                var manhattanUrl = 'http://cooper-union-search-proxy.herokuapp.com/twitter/search/"wake up" OR "good morning" OR goodmorning OR "bad morning" OR morning OR "good night" OR goodnight OR sleep OR "go to sleep"&?geocode=40.720049,-74.001589,1mi&?geocode=40.794816,-73.955412,1mi';
+                                $.get(manhattanUrl, function(response){
+                                        
+                                        //start counting at 0
+                                        var awake=0;
+                                        var asleep=0;
+                                        
+                                        //know how many results you received
+                                        var manhattanLimit = response.statuses.length;
+                                        
+                                        //loop through each result
+                                        $.each(response.statuses, function(index, status){
+                                        
+                                                //if the result contains ref to awake
+                                                if(status.text.search("wake up"|"good morning"|"bad morning"|"morning")>=0) {
+                                                        //add 1 to the asleep counter
+                                                        awake++;
+                                                        
+                                                }
+                                               //if the result contains ref to sleep
+                                                if(status.text.search("goodnight"|"good night"|"sleep"|"go to sleep")>=0) {
+                                                        //add 1 to the asleep counter
+                                                        asleep++;
+                                                        
+                                                }
+                                                //if we're on the last item
+                                                if(index == (response.statuses.length-1)) {
+                                                        //our counting is done, let's do something with this
+                                                        console.log("awake: "+awake);
+                                                        console.log("asleep: "+asleep);
+                                                        if(awake >= asleep) {
+                                      			          	$('#manhattan').addClass('.awake')
+                                      			      	} else {
+                                                			$('#manhattan').addClass('.asleep')
+                                                		}
+                                                }
+                                                
+                                                
+                                                
+                                        });
+                                });
+                                
+                                
+                               /*
+                               //get the most recent tweets about waking and falling asleep in Brooklyn
+                                var brooklynUrl = 'http://cooper-union-search-proxy.herokuapp.com/twitter/search/wake+up%20OR%20good+morning%20OR%20bad+morning%20OR%20breakfast%20OR%20morning%20OR%20good%20night%20OR%20sleep%20OR%20go%20to%20sleep&?geocode=40.650012,-73.950101,4mi&?result_type=recent';
+                                $.get(brooklynUrl, function(response){
+                                        
+                                        //start counting at 0
+                                        var awake = 0;
+                                        var asleep = 0;
+                                        
+                                        //know how many results you received
+                                        var brooklynLimit = response.statuses.length;
+                                        
+                                        //loop through each result
+                                        $.each(response.statuses, function(index, status){
+                                        
+                                                //if the result contains ref to awake
+                                                if(status.text.search("awake"|"morning"|"good morning"|"breakfast">=0) {
+                                                        //add 1 to the asleep counter
+                                                        awake++;
+                                                        
+                                                }
+                                               
+                                               //if the result contains ref to sleep
+                                                if(status.text.search("sleep"|"asleep"|"good night">=0) {
+                                                        //add 1 to the asleep counter
+                                                        asleep++;
+                                                        
+                                                }
+                                               
+                                                //if we're on the last item
+                                                if(index == (response.statuses.length-1)) {
+                                                        //our counting is done, let's do something with this
+                                                        console.log("awake: "+awake);
+                                                        consele.log("asleep: "+asleep);
+                                                }
+                                                
+                                                if(awake>asleep) {
+                                                	$("#brooklyn").addClass(".awake")
+                                                } else {
+                                                	$("#brooklyn").addClass(".asleep")
+                                                }
+                                                
+                                        });
+                                });
+                        
+                        
+                        //get the most recent tweets about waking and falling asleep in Queens
+                                var queensUrl = 'http://cooper-union-search-proxy.herokuapp.com/twitter/search/wake+up%20OR%20good+morning%20OR%20bad+morning%20OR%20breakfast%20OR%20morning%20OR%20good%20night%20OR%20sleep%20OR%20go%20to%20sleep&?geocode=40.728157,-73.794801,4mi&?result_type=recent';
+                                $.get(queensUrl, function(response){
+                                        
+                                        //start counting at 0
+                                        var awake = 0;
+                                        var asleep = 0;
+                                        
+                                        //know how many results you received
+                                        var queensLimit = response.statuses.length;
+                                        
+                                        //loop through each result
+                                        $.each(response.statuses, function(index, status){
+                                        
+                                                //if the result contains ref to awake
+                                                if(status.text.search("awake"|"morning"|"good morning"|"breakfast">=0) {
+                                                        //add 1 to the asleep counter
+                                                        awake++;
+                                                        
+                                                }
+                                               
+                                               //if the result contains ref to sleep
+                                                if(status.text.search("sleep"|"asleep"|"good night">=0) {
+                                                        //add 1 to the asleep counter
+                                                        asleep++;
+                                                        
+                                                }
+                                               
+                                                //if we're on the last item
+                                                if(index == (response.statuses.length-1)) {
+                                                        //our counting is done, let's do something with this
+                                                        console.log("awake: "+awake);
+                                                        consele.log("asleep: "+asleep);
+                                                }
+                                                
+                                                if(awake>asleep) {
+                                                	$("#queens").addClass(".awake")
+                                                } else {
+                                                	$("#queens").addClass(".asleep")
+                                                }
+                                                
+                                        });
+                                });
+                        
+                        
+                        
+                        //get the most recent tweets about waking and falling asleep in Bronx
+                                var bronxUrl = 'http://cooper-union-search-proxy.herokuapp.com/twitter/search/wake+up%20OR%20good+morning%20OR%20bad+morning%20OR%20breakfast%20OR%20morning%20OR%20good%20night%20OR%20sleep%20OR%20go%20to%20sleep&?geocode=40.838920,-73.866963,4mi&?result_type=recent';
+                                $.get(bronxUrl, function(response){
+                                        
+                                        //start counting at 0
+                                        var awake = 0;
+                                        var asleep = 0;
+                                        
+                                        //know how many results you received
+                                        var bronxLimit = response.statuses.length;
+                                        
+                                        //loop through each result
+                                        $.each(response.statuses, function(index, status){
+                                        
+                                                //if the result contains ref to awake
+                                                if(status.text.search("awake"|"morning"|"good morning"|"breakfast">=0) {
+                                                        //add 1 to the asleep counter
+                                                        awake++;
+                                                        
+                                                }
+                                               
+                                               //if the result contains ref to sleep
+                                                if(status.text.search("sleep"|"asleep"|"good night">=0) {
+                                                        //add 1 to the asleep counter
+                                                        asleep++;
+                                                        
+                                                }
+                                               
+                                                //if we're on the last item
+                                                if(index == (response.statuses.length-1)) {
+                                                        //our counting is done, let's do something with this
+                                                        console.log("awake: "+awake);
+                                                        consele.log("asleep: "+asleep);
+                                                }
+                                                
+                                                if(awake>asleep) {
+                                                	$("#bronx").addClass(".awake")
+                                                } else {
+                                                	$("#bronx").addClass(".asleep")
+                                                }
+                                                
+                                        });
+                                });
+                        
+                        
+                        //get the most recent tweets about waking and falling asleep in Staten Island
+                                var statenUrl = 'http://cooper-union-search-proxy.herokuapp.com/twitter/search/wake+up%20OR%20good+morning%20OR%20bad+morning%20OR%20breakfast%20OR%20morning%20OR%20good%20night%20OR%20sleep%20OR%20go%20to%20sleep&?geocode=40.579446,-74.150333,4mi&?result_type=recent';
+                                $.get(statenUrl, function(response){
+                                        
+                                        //start counting at 0
+                                        var awake = 0;
+                                        var asleep = 0;
+                                        
+                                        //know how many results you received
+                                        var statenLimit = response.statuses.length;
+                                        
+                                        //loop through each result
+                                        $.each(response.statuses, function(index, status){
+                                        
+                                                //if the result contains ref to awake
+                                                if(status.text.search("awake"|"morning"|"good morning"|"breakfast">=0) {
+                                                        //add 1 to the asleep counter
+                                                        awake++;
+                                                        
+                                                }
+                                               
+                                               //if the result contains ref to sleep
+                                                if(status.text.search("sleep"|"asleep"|"good night">=0) {
+                                                        //add 1 to the asleep counter
+                                                        asleep++;
+                                                        
+                                                }
+                                               
+                                                //if we're on the last item
+                                                if(index == (response.statuses.length-1)) {
+                                                        //our counting is done, let's do something with this
+                                                        console.log("awake: "+awake);
+                                                        consele.log("asleep: "+asleep);
+                                                }
+                                                
+                                                if(awake>asleep) {
+                                                	$("#staten").addClass(".awake")
+                                                } else {
+                                                	$("#staten").addClass(".asleep")
+                                                }
+                                                
+                                        });
+                                });
+                        
+                        
+                        */
+                        });
+                        
+                        
+                </script>
+                <style>
+                        
+                        #manhattan, #brooklyn, #queens, #bronx, #staten {
+                            width:200px;
+                            height:200px;
+            	            background-color:black;
+                            margin-right: 25px;
+                            margin-bottom: 25px;
+                        }
+                        
+                        .label {
+                        	margin-left: auto;
+                        	margin-right: auto;
+                        	color: white;
+                        	font-family: arial;
+                        }
+                        
+                        .awake {
+                           background-color:green;
+                        }
+                        
+                        .asleep {
+                    		background-color:blue;
+                        }
+                        
+                        .container div {
+                           float:left;
+                        }
+                        
+                        
+                </style>
+        
+        </head>
+        <body>
+                <div class="container">
+                        <div id="manhattan">
+                        	<p class="label">Manhattan</p>
+                        </div>
+                        <div id="brooklyn">
+                        	<p class="label">Brooklyn</p>
+                        </div>
+                        <div id="queens">
+                        	<p class="label">Queens</p>
+                        </div>
+                        <div id="bronx">
+                        	<p class="label">Bronx</p>
+                        </div>
+                        <div id="staten">
+                        	<p class="label">Staten Is.</p>
+                        </div>
+                </div>
+        </body>
+</html>        
