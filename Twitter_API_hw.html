@@ -38,9 +38,9 @@
                                                         console.log("awake: "+awake);
                                                         console.log("asleep: "+asleep);
                                                         if(awake >= asleep) {
-                                      			          	$('#manhattan').addClass('.awake')
+                                      			          	$('.manhattan').addClass('awake')
                                       			      	} else {
-                                                			$('#manhattan').addClass('.asleep')
+                                                			$('.manhattan').addClass('asleep')
                                                 		}
                                                 }
                                                 
@@ -236,10 +236,17 @@
                         });
                         
                         
+                     //brooklyn geo   ?geocode=40.650012,-73.950101,4mi
+                     //queens geo   ?geocode=40.728157,-73.794801,4mi
+                     //bronx geo    ?geocode=40.838920,-73.866963,4mi
+                     //SI geo     ?geocode=40.579446,-74.150333,4mi   
+                        
+                        
+                        
                 </script>
                 <style>
                         
-                        #manhattan, #brooklyn, #queens, #bronx, #staten {
+                        .manhattan, .brooklyn, .queens, .bronx, .staten {
                             width:200px;
                             height:200px;
             	            background-color:black;
@@ -272,19 +279,19 @@
         </head>
         <body>
                 <div class="container">
-                        <div id="manhattan">
+                        <div class="manhattan">
                         	<p class="label">Manhattan</p>
                         </div>
-                        <div id="brooklyn">
+                        <div class="brooklyn">
                         	<p class="label">Brooklyn</p>
                         </div>
-                        <div id="queens">
+                        <div class="queens">
                         	<p class="label">Queens</p>
                         </div>
-                        <div id="bronx">
+                        <div class="bronx">
                         	<p class="label">Bronx</p>
                         </div>
-                        <div id="staten">
+                        <div class="staten">
                         	<p class="label">Staten Is.</p>
                         </div>
                 </div>
