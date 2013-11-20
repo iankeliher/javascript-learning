@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <title>Google Spreadsheet JSON Example</title>
+                <script src="http://code.jquery.com/jquery-latest.js"></script>
+                <script>
+                        $(document).ready(function(){
+
+                                //Step 1: Share your google spreadsheet as a public document
+                                //Step 2: Publish your spreadsheet
+                                // File -> Publish to the web
+                                // Start publishing
+                                //Step 3: Copy key from url
+                                // Full url: https://docs.google.com/spreadsheet/pub?key=0ApDVrlAbUFv2dGdLRy1GRk55MXhwcU9LX0h0V1dKNkE&output=html
+                                // Relevant part: 0ApDVrlAbUFv2dGdLRy1GRk55MXhwcU9LX0h0V1dKNkE
+                                //Step 4: Paste below in 'spreadsheetKey' variable
+
+                                var spreadsheetKey = '0ApDVrlAbUFv2dGdLRy1GRk55MXhwcU9LX0h0V1dKNkE';
+                                var url = 'https://spreadsheets.google.com/feeds/cells/'+spreadsheetKey+'/1/public/basic?alt=json-in-script';
+
+                                $.ajax({
+                                  type: 'GET',
+                                  dataType: 'jsonp',
+                                  url: url,
+                                  success: function(response){
+
+
+                                        
+
+                                                $.each(response.feed.entry, function(index, row){
+                                        
+                                                        //ignore timestamps that begin with '11'
+
+                                                        if(row.title.$t.substring(0,1) != "A") {
+                                                                var text = row.content.$t;
+                                                                var title = row.title.$t;
+                                                
+                                                                if(title != "B1") {
+                                                                        console.log(row.content.$t);
+                                                        }
+												}
+
+                                                });
+                                  }
+                                });
+                        });
+                </script>
+        </head>
+        <body>
+        </body>
+</html>
